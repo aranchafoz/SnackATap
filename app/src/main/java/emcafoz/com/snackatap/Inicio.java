@@ -12,12 +12,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import emcafoz.com.snackatap.sqlite.MySQLiteHelper;
+
 public class Inicio extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        MySQLiteHelper.createDB(this);
+
         setContentView(R.layout.activity_inicio);
         Toolbar toolbar = (Toolbar) findViewById(R.id.miToolbar);
         setSupportActionBar(toolbar);

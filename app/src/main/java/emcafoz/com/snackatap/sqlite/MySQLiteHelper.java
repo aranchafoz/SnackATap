@@ -7,6 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 import emcafoz.com.snackatap.modelos.Categoria;
@@ -17,7 +22,6 @@ import emcafoz.com.snackatap.modelos.Producto;
  * Created by enrique on 4/02/16.
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
-
     private static final int DATABASE_VERSION = 1;
 
     private static final String DATABASE_NAME = "ProductosDB";
@@ -47,12 +51,15 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
     }
 
 
     public static void createDB(Context context) {
         MySQLiteHelper helper = new MySQLiteHelper(context);
 
+        helper.copyDatabaseFromAssets(context, DATABASE_NAME, false);
+/*
         //region cosas pasadas
         Log.d("Edificios", Integer.toString(helper.getAllEdificios().size()));
         Log.d("Productos", Integer.toString(helper.getAllProductos().size()));
@@ -234,11 +241,64 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         helper.addProducto(new Producto("Galletas con Fibra", 0.8f, Categoria.ComidaSana, comida_sana));
         helper.addProducto(new Producto("Tortitas Bicentury", 0.8f, Categoria.ComidaSana, comida_sana));
 
+        Log.d("Edificios", Integer.toString(helper.getAllEdificios().size()));
+        Log.d("Productos", Integer.toString(helper.getAllProductos().size()));
+
+*/
         //endregion
     }
 
+    /**
+     * Copy database file from assets folder inside the apk to the system database path.
+     * @param context Context
+     * @param databaseName Database file name inside assets folder
+     * @param overwrite True to rewrite on the database if exists
+     * @return True if the database have copied successfully or if the database already exists without overwrite, false otherwise.
+     */
+    public boolean copyDatabaseFromAssets(Context context, String databaseName , boolean overwrite)  {
+        File outputFile = context.getDatabasePath(databaseName);
+
+        if (outputFile.exists() && !overwrite) {
+            return true;
+        }
+
+        outputFile = context.getDatabasePath(databaseName);
+        Log.d("Path: ", outputFile.toString());
+        outputFile.getParentFile().mkdirs();
+
+        try {
+            InputStream inputStream = context.getAssets().open(databaseName);
+            OutputStream outputStream = new FileOutputStream(outputFile);
+
+
+            // transfer bytes from the input stream into the output stream
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = inputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, length);
+            }
+
+            // Close the streams
+            outputStream.flush();
+            outputStream.close();
+            inputStream.close();
+
+            outputFile.renameTo(context.getDatabasePath(databaseName));
+
+        } catch (IOException e) {
+            if (outputFile.exists()) {
+                outputFile.delete();
+            }
+            Log.d("IOException", e.toString());
+            return false;
+        }
+        return true;
+    }
+
+
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         Log.d("onCreate", "Creating Database");
         String CREATE_TABLE_PRODUCTO = "CREATE TABLE " + PRODUCTO_TABLA + " ( " +
                 PRODUCTO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -267,6 +327,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_RELACION);
 
         Log.d("onCreate", "Database Created" + " in " + db.getPath());
+
+
+
     }
 
     @Override
