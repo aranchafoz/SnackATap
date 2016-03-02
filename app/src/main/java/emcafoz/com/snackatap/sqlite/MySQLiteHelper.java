@@ -49,9 +49,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public static void init() {
-
-    }
 
     public static void createDB(Context context) {
         MySQLiteHelper helper = new MySQLiteHelper(context);
