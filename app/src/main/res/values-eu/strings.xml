@@ -16,6 +16,9 @@
     <string name="snack">Mokaduak</string>
     <string name="cafe">Kafeak</string>
 
+    <string name="precio">Prezioa</string>
+    <string name="producto">Produktu</string>
+
     <string name="action_search">Action of search</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

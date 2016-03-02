@@ -16,6 +16,9 @@
     <string name="snack">Snacks</string>
     <string name="cafe">Coffee</string>
 
+    <string name="precio">Price</string>
+    <string name="producto">Product</string>
+
     <string name="action_search">Action of search</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

@@ -31,7 +31,7 @@ public class ScrollingActivity extends AppCompatActivity {
         nombreProducto.setText(bundle.getString("nombre"));
 
         nombreProducto = (TextView) findViewById(R.id.precio_producto);
-        nombreProducto.setText(bundle.getFloat("precio") + "");
+        nombreProducto.setText(bundle.getFloat("precio") + " €");
 
         //endregion
 

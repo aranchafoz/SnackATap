@@ -16,6 +16,9 @@
     <string name="snack">Snacks</string>
     <string name="cafe">Cafés</string>
 
+    <string name="precio">Precio</string>
+    <string name="producto">Producto</string>
+
     <string name="action_search">Action of search</string>
     <string name="toolbar">Toolbar_search</string>
 
