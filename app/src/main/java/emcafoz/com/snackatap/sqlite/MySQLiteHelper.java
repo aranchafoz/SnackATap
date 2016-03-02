@@ -49,6 +49,197 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    public static void init() {
+
+    }
+
+    public static void createDB(Context context) {
+        MySQLiteHelper helper = new MySQLiteHelper(context);
+
+        //region cosas pasadas
+        Log.d("Edificios", Integer.toString(helper.getAllEdificios().size()));
+        Log.d("Productos", Integer.toString(helper.getAllProductos().size()));
+
+        helper.addEdificio(new Edificio("Polideportivo", 38.388595, -0.515524));
+        helper.addEdificio(new Edificio("Ciencias II", 38.386749, -0.515188));
+        helper.addEdificio(new Edificio("Derecho", 38.385601, -0.517009));
+        helper.addEdificio(new Edificio("Pabellón 12", 38.386244, -0.513714));
+        helper.addEdificio(new Edificio("EPS III", 38.386755, -0.512054));
+        helper.addEdificio(new Edificio("EPS II", 38.387349, -0.512307));
+        helper.addEdificio(new Edificio("EPS IV", 38.382972, -0.509874));
+        helper.addEdificio(new Edificio("Filosofía y Letras I", 38.386002, -0.514336));
+        helper.addEdificio(new Edificio("Filosofía y Letras II", 38.385415, -0.514367));
+        helper.addEdificio(new Edificio("Filosofía y Letras III", 38.385005, -0.515461));
+        helper.addEdificio(new Edificio("Pabellón de Alumnado", 38.385769, -0.513585));
+        helper.addEdificio(new Edificio("Aulario I", 38.383056, -0.516116));
+        helper.addEdificio(new Edificio("Torre de Control", 38.384638, -0.513127));
+        helper.addEdificio(new Edificio("Rectorado", 38.384802, -0.511599));
+        helper.addEdificio(new Edificio("Colegio Mayor", 38.385177, -0.509383));
+        helper.addEdificio(new Edificio("Aulario II", 38.384512, -0.510159));
+        helper.addEdificio(new Edificio("Económicas", 38.382941, -0.514229));
+        helper.addEdificio(new Edificio("Biblioteca", 38.383268, -0.512104));
+        helper.addEdificio(new Edificio("Ciencias Sociales", 38.383577, -0.510936));
+        helper.addEdificio(new Edificio("Germán Benácer", 38.382366, -0.512325));
+        helper.addEdificio(new Edificio("Institutos Universitarios", 38.382686, -0.511640));
+        helper.addEdificio(new Edificio("Óptica", 38.382770, -0.510792));
+        helper.addEdificio(new Edificio("Aulario III", 38.382331, -0.508505));
+        helper.addEdificio(new Edificio("Educación", 38.387747, -0.519891));
+        helper.addEdificio(new Edificio("Club Social 1", 38.384459, -0.516095));
+
+
+        ArrayList<Edificio> cafeXXL = new ArrayList<>();
+        cafeXXL.add(helper.getEdificio("Club Social 1"));
+
+        helper.addProducto(new Producto("Choco-Latte Frape XXL", 1.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Café Avellana Frío XXL", 1.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Frappe Intensa XXL", 1.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Cafe-Latte Ice Expresso XXL", 1.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Cafe-Latte Ice Descafeinado XXL", 1.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("White Frapuccio XXL", 1.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Ice Chocolate Cream XXL", 1.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Manhattan Frape XXL", 1.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Café con Leche Descafeinado XXL", 1f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Capuccino Descafeinado XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Leche Manchada", 0.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Descafeinado Largo", 0.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Descafeinado Corto", 0.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Ristretto Finca Las Morentas", 0.7f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Capuccino Finca Las Morenitas XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Latte Macciatto Finca Las Morenitas XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Café Cortado Finca Las Morenitas", 0.7f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Café Largo Finca Las Morenitas", 0.7f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Café Corto Finca Las Morenitas", 1.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Café Corto Clásico", 0.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Café Largo Clásico", 0.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Café Cortado Clásico", 0.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Café con Leche Clásico", 0.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Capuccino con Chocolate", 0.6f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Leche Manchada Clásica", 0.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Café con Leche XXL", 1f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Café Americano XXL", 1f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Café a la Avellana XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Crema de Avellana XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Café Mocca XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Smooth Cappuccino XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("White Capuccino XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Capuccino Finca Las Morenitas XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Cappuccino Descafeinado XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Crema de Cacao XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Chocolate Blanco XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Chocolate Small", 0.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Chocolate con Leche Small", 0.5f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Chocolate Premium XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Chocolate Con Leche Premium XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Crema de Cacao XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+        helper.addProducto(new Producto("Chocolate Blanco XXL", 1.2f, Categoria.CaféXXL, cafeXXL));
+
+        ArrayList<Edificio> cafes = helper.getAllEdificios();
+
+        helper.addProducto(new Producto("Café solo", 0.4f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Café largo", 0.4f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Café cortado", 0.5f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Café con leche", 0.5f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Capuccino", 0.5f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Café solo (Comercio Justo)", 0.4f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Café cortado (Comercio Justo)", 0.4f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Café con leche (Comercio Justo)", 0.4f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Capuccino (Comercio Justo)", 0.4f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Té con limón", 0.2f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Café solo descafeinado", 0.4f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Café largo descafeinado", 0.4f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Café cortado descafeinado", 0.5f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Café con leche descafeinado", 0.5f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Capuccino descafeinado", 0.5f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Leche", 0.2f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Chocolate con leche", 0.5f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Chocolate", 0.5f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Leche manchada", 0.2f, Categoria.Café, cafes));
+        helper.addProducto(new Producto("Capuccino vainilla", 0.5f, Categoria.Café, cafes));
+
+        ArrayList<Edificio> refrescos = helper.getAllEdificios();
+        refrescos.remove(helper.getEdificio("EPS III"));
+        refrescos.remove(helper.getEdificio("Filosofía y Letras III"));
+        refrescos.remove(helper.getEdificio("Pabellón de Alumnado"));
+        refrescos.remove(helper.getEdificio("Colegio Mayor"));
+        refrescos.remove(helper.getEdificio("Óptica"));
+
+        ArrayList<Edificio> snacks = helper.getAllEdificios();
+        snacks.remove(helper.getEdificio("Pabellón de Alumnado"));
+        snacks.remove(helper.getEdificio("Pabellón 12"));
+        snacks.remove(helper.getEdificio("EPS II"));
+        snacks.remove(helper.getEdificio("Torre de Control"));
+
+        helper.addProducto(new Producto("Agua", 0.5f, Categoria.Refresco, refrescos));
+        helper.addProducto(new Producto("Coca Cola lata", 0.7f, Categoria.Refresco, refrescos));
+
+        helper.addProducto(new Producto("Nestea", 1f, Categoria.Refresco, snacks));
+        helper.addProducto(new Producto("Red Bull", 1f, Categoria.Refresco, snacks));
+        helper.addProducto(new Producto("Coca Cola 0.5l", 1f, Categoria.Refresco, snacks));
+        helper.addProducto(new Producto("Coca Cola Zero 0.5l", 1f, Categoria.Refresco, snacks));
+        helper.addProducto(new Producto("Cacaolat", 0.5f, Categoria.Refresco, snacks));
+        helper.addProducto(new Producto("Disfruta Piña", 0.35f, Categoria.Refresco, snacks));
+        helper.addProducto(new Producto("Disfruta Naranja", 0.35f, Categoria.Refresco, snacks));
+        helper.addProducto(new Producto("Bifrutas Tropical", 0.6f, Categoria.Refresco, snacks));
+        helper.addProducto(new Producto("Bifrutas Mediterráneo", 0.6f, Categoria.Refresco, snacks));
+        helper.addProducto(new Producto("Fanta Naranja", 0.7f, Categoria.Refresco, snacks));
+        helper.addProducto(new Producto("Monster", 1.7f, Categoria.Refresco, snacks));
+
+        helper.addProducto(new Producto("Pan de Pipas Velarte", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Patatas Onduladas", 0.5f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Palitos Velarte", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Milka Leo", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Mister Corn Mix5", 0.5f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Pastelito Dulcesol", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Tic Break", 0.7f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Galletas El Gorriaga", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Mini Digestive", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Chips Ahoy", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Oreo", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("M&M's", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Twix", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Chicles Orbit", 0.6f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Galletas Krit Cuetara", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Donuts", 1f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Donuts chocolate", 1f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Galletas Belvita", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Mini Palmera Dulcesol", 0.5f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Skittles", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Ositos Haribo", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Sándwiches varios", 1f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Bocadillos varios", 1.5f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Palmera Dulcesol", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Alba Panetines", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Doritos", 0.95f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Fantasmitas Chetos", 0.95f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Papa Delta", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Kinder Bueno", 1.10f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("KitKat", 0.9f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Mister Corn Quicos", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Ensaladas varias", 1.2f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Galletas Principe", 0.9f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("M&M's Cine", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Chocolatina Milka Oreo", 0.9f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Nestlé Snack", 0.8f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Galletas Principe", 0.9f, Categoria.Snacks, snacks));
+        helper.addProducto(new Producto("Donetes", 1.25f, Categoria.Snacks, snacks));
+
+
+        ArrayList<Edificio> comida_sana = new ArrayList<>();
+        comida_sana.add(helper.getEdificio("Aulario II"));
+        comida_sana.add(helper.getEdificio("Derecho"));
+        comida_sana.add(helper.getEdificio("Polideportivo"));
+        comida_sana.add(helper.getEdificio("Biblioteca"));
+
+        helper.addProducto(new Producto("Tortitas Bicentury", 0.8f, Categoria.ComidaSana, comida_sana));
+        helper.addProducto(new Producto("Mini Tortitas", 0.8f, Categoria.ComidaSana, comida_sana));
+        helper.addProducto(new Producto("Galletas Muesli", 0.8f, Categoria.ComidaSana, comida_sana));
+        helper.addProducto(new Producto("Ensaladillas Varias", 2f, Categoria.ComidaSana, comida_sana));
+        helper.addProducto(new Producto("Galletas con Fibra", 0.8f, Categoria.ComidaSana, comida_sana));
+        helper.addProducto(new Producto("Tortitas Bicentury", 0.8f, Categoria.ComidaSana, comida_sana));
+
+        //endregion
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d("onCreate", "Creating Database");
@@ -94,33 +285,52 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      */
 
     public void addProducto(Producto producto) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
+        SQLiteDatabase check = this.getReadableDatabase();
+        Producto p = getProducto(producto.getNombre());
+        if (p == null) {
+            check.close();
 
-        values.put(PRODUCTO_NOMBRE, producto.getNombre());
-        values.put(PRODUCTO_PRECIO, producto.getPrecio());
-        values.put(PRODUCTO_CATEGORIA, producto.getCategoria().toString());
-        values.put(PRODUCTO_FAV, producto.isFav());
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
 
-        db.insert(PRODUCTO_TABLA, null, values);
+            values.put(PRODUCTO_NOMBRE, producto.getNombre());
+            values.put(PRODUCTO_PRECIO, producto.getPrecio());
+            values.put(PRODUCTO_CATEGORIA, producto.getCategoria().toString());
+            values.put(PRODUCTO_FAV, producto.isFav());
 
-        db.close();
+            db.insert(PRODUCTO_TABLA, null, values);
 
-        addProductosInEdificio(producto);
+            db.close();
+
+            addProductosInEdificio(producto);
+
+            Log.d("addProducto", producto.toString());
+        } else {
+            Log.d("Producto ya añadido", producto.toString());
+        }
     }
 
     public void addEdificio(Edificio edificio) {
-        Log.d("addEdificio", edificio.toString());
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
+        SQLiteDatabase check = this.getReadableDatabase();
+        Edificio e = getEdificio(edificio.getNombre());
+        if (e == null) {
+            check.close();
 
-        values.put(EDIFICIO_NOMBRE, edificio.getNombre());
-        values.put(EDIFICIO_CX, edificio.getCx());
-        values.put(EDIFICIO_CY, edificio.getCy());
+            Log.d("addEdificio", edificio.toString());
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
 
-        db.insert(EDIFICIO_TABLA, null, values);
+            values.put(EDIFICIO_NOMBRE, edificio.getNombre());
+            values.put(EDIFICIO_CX, edificio.getCx());
+            values.put(EDIFICIO_CY, edificio.getCy());
 
-        db.close();
+            db.insert(EDIFICIO_TABLA, null, values);
+
+            db.close();
+        } else {
+            Log.d("Edificio ya añadido", edificio.toString());
+        }
+
     }
 
     private void addProductosInEdificio(Producto producto) {
@@ -150,18 +360,19 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                         new String[]{String.valueOf(id)},
                         null, null, null, null);
 
-        if (cursor != null)
+        if (cursor != null) {
             cursor.moveToFirst();
-
-        Producto producto = new Producto();
-        producto.setId(Integer.parseInt(cursor.getString(0)));
-        producto.setNombre(cursor.getString(1));
-        producto.setPrecio(Float.parseFloat(cursor.getString(2)));
-        producto.setCategoria(Categoria.valueOf(cursor.getString(3)));
-        producto.setFav(Boolean.parseBoolean(cursor.getString(4)));
-
-
-        return producto;
+            Producto producto = new Producto();
+            producto.setId(Integer.parseInt(cursor.getString(0)));
+            producto.setNombre(cursor.getString(1));
+            producto.setPrecio(Float.parseFloat(cursor.getString(2)));
+            producto.setCategoria(Categoria.valueOf(cursor.getString(3)));
+            producto.setFav(Boolean.parseBoolean(cursor.getString(4)));
+            cursor.close();
+            producto.setEdificios(getEdificiosOfProducto(producto.getId()));
+            return producto;
+        } else
+            return null;
     }
 
     public Producto getProducto(String nombre) {
@@ -173,18 +384,24 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 new String[]{String.valueOf(nombre)},
                 null, null, null, null);
 
-        if (cursor != null)
+        if (cursor != null) {
             cursor.moveToFirst();
+            try {
+                Producto producto = new Producto();
+                producto.setId(Integer.parseInt(cursor.getString(0)));
+                producto.setNombre(cursor.getString(1));
+                producto.setPrecio(Float.parseFloat(cursor.getString(2)));
+                producto.setCategoria(Categoria.valueOf(cursor.getString(3)));
+                producto.setFav(Boolean.parseBoolean(cursor.getString(4)));
+                cursor.close();
+                producto.setEdificios(getEdificiosOfProducto(producto.getId()));
+                return producto;
+            } catch (Exception e) {
+                return null;
+            }
 
-        Producto producto = new Producto();
-        producto.setId(Integer.parseInt(cursor.getString(0)));
-        producto.setNombre(cursor.getString(1));
-        producto.setPrecio(Float.parseFloat(cursor.getString(2)));
-        producto.setCategoria(Categoria.valueOf(cursor.getString(3)));
-        producto.setFav(Boolean.parseBoolean(cursor.getString(4)));
-        producto.setEdificios(getEdificiosOfProducto(producto.getId()));
-
-        return producto;
+        }
+        return null;
     }
 
     public Edificio getEdificio(int id) {
@@ -197,16 +414,22 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 null, null, null, null);
 
 
-        if (cursor != null)
+        if (cursor != null) {
             cursor.moveToFirst();
+            try {
+                Edificio edificio = new Edificio();
+                edificio.setId(Integer.parseInt(cursor.getString(0)));
+                edificio.setNombre(cursor.getString(1));
+                edificio.setCoordenadas(Float.parseFloat(cursor.getString(2)),
+                        Float.parseFloat(cursor.getString(3)));
+                cursor.close();
+                return edificio;
+            } catch (Exception e) {
+                return null;
+            }
+        } else
+            return null;
 
-        Edificio edificio = new Edificio();
-        edificio.setId(Integer.parseInt(cursor.getString(0)));
-        edificio.setNombre(cursor.getString(1));
-        edificio.setCoordenadas(Float.parseFloat(cursor.getString(2)),
-                Float.parseFloat(cursor.getString(3)));
-
-        return edificio;
     }
 
     public ArrayList<Producto> getProductosFromCategoria(Categoria categoria) {
@@ -248,13 +471,18 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        Edificio edificio = new Edificio();
-        edificio.setId(Integer.parseInt(cursor.getString(0)));
-        edificio.setNombre(cursor.getString(1));
-        edificio.setCoordenadas(Float.parseFloat(cursor.getString(2)),
-                Float.parseFloat(cursor.getString(3)));
+        try {
+            Edificio edificio = new Edificio();
+            edificio.setId(Integer.parseInt(cursor.getString(0)));
+            edificio.setNombre(cursor.getString(1));
+            edificio.setCoordenadas(Float.parseFloat(cursor.getString(2)),
+                    Float.parseFloat(cursor.getString(3)));
+            cursor.close();
+            return edificio;
+        } catch (Exception e) {
+            return null;
+        }
 
-        return edificio;
     }
 
     public ArrayList<Producto> getAllProductos() {
