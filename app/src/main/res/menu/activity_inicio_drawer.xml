@@ -5,11 +5,11 @@
         <item
             android:id="@+id/nav_search"
             android:icon="@drawable/ic_action_search"
-            android:title="Buscar" />
+            android:title="@string/buscar" />
         <item
             android:id="@+id/nav_categories"
             android:icon="@drawable/ic_action_categories"
-            android:title="Categorías">
+            android:title="@string/categorias">
             <!--
                 <menu>
                     <group>
@@ -28,19 +28,19 @@
         <item
             android:id="@+id/nav_filter"
             android:icon="@drawable/ic_action_name2"
-            android:title="Filtrar" />
+            android:title="@string/filtrar" />
     </group>
 
-    <item android:title="Más...">
+    <item android:title="@string/mas">
         <menu>
             <item
                 android:id="@+id/nav_contact"
                 android:icon="@drawable/ic_action_name"
-                android:title="Contáctanos" />
+                android:title="@string/contact" />
             <item
                 android:id="@+id/nav_setting"
                 android:icon="@drawable/ic_action_name3"
-                android:title="Ajustes" />
+                android:title="@string/ajustes" />
         </menu>
     </item>
 

@@ -37,8 +37,6 @@ public class ListaProductos extends AppCompatActivity{
         //Inicializa los datos de productos
         datos = new ArrayList<>();
         //Rellenar con datos reales
-        datos.add(new Producto("Cafe de cocaina", 0.5f, Categoria.Café, null));
-        datos.add(new Producto("Cafe de marihuana", 0.5f, Categoria.Café, null));
         datos.add(new Producto("Agua",0.5f, Categoria.Agua,null));
         datos.add(new Producto("Cafe de vainilla",0.5f, Categoria.Café,null));
         datos.add(new Producto("Cafe de avellana",0.5f, Categoria.Café,null));

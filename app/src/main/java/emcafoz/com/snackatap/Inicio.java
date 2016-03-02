@@ -54,7 +54,7 @@ public class Inicio extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.inicio, menu);
+
         return true;
     }
 
@@ -63,12 +63,7 @@ public class Inicio extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -81,17 +76,20 @@ public class Inicio extends AppCompatActivity
 
         if (id == R.id.nav_search) {
             // Handle the camera action
-            Intent i = new Intent(this,ListaProductos.class);
+            Intent i = new Intent(this,Buscar.class);
             startActivity(i);
         } else if (id == R.id.nav_categories) {
             // Desplegar las 4 categorias: cafes, frutas, refrescos, snacks
-            Intent i = new Intent(this,ScrollingActivity.class);
+            Intent i = new Intent(this,ListaProductos.class);
             startActivity(i);
         } else if (id == R.id.nav_filter) {
             Intent i2 = new Intent(this,SelectFilters.class);
             startActivity(i2);
         }  else if (id == R.id.nav_contact) {
-            // Hacer cosas chungas con la app de correo
+
+            //region Hacer cosas chungas con la app de correo
+            //endregion
+
         } else if (id == R.id.nav_setting) {
             Intent i3 = new Intent(this,Settings.class);
             startActivity(i3);

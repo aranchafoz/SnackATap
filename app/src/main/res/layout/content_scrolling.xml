@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:id="@+id/nombre_producto"
-                android:text="Café de vainilla"/>
+                android:text="Producto X"/>
 
         </RelativeLayout>
 

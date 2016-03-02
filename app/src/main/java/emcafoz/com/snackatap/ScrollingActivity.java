@@ -40,8 +40,12 @@ public class ScrollingActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, getResources().getString(R.string.snackbar), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                //region reemplazar con Google Maps
+               // Snackbar.make(view, getResources().getString(R.string.snackbar), Snackbar.LENGTH_LONG)
+               //         .setAction("Action", null).show();
+                //endregion
+
             }
         });
         //endregion
