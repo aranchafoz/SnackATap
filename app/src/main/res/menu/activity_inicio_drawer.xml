@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/ic_action_search"
+            android:title="Buscar" />
+        <item
+            android:id="@+id/nav_categories"
+            android:icon="@drawable/ic_action_categories"
+            android:title="Categorías">
+            <!--
+                <menu>
+                    <group>
+                        <item android:id="@+id/nav_agua"
+                            android:title="Agua" />
+                        <item android:id="@+id/nav_cafe"
+                            android:title="Café" />
+                        <item android:id="@+id/nav_refresco"
+                            android:title="Refrescos" />
+                        <item android:id="@+id/nav_snack"
+                            android:title="Snack" />
+                    </group>
+                </menu>
+              -->
+        </item>
+        <item
+            android:id="@+id/nav_filter"
+            android:icon="@drawable/ic_action_name2"
+            android:title="Filtrar" />
+    </group>
+
+    <item android:title="Más...">
+        <menu>
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/ic_action_name"
+                android:title="Contáctanos" />
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_action_name3"
+                android:title="Ajustes" />
+        </menu>
+    </item>
+
+</menu>
