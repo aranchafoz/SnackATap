@@ -1,12 +1,16 @@
 package emcafoz.com.snackatap;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.Pair;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,6 +21,9 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.security.spec.ECField;
+import java.util.ArrayList;
+
 import emcafoz.com.snackatap.modelos.Edificio;
 import emcafoz.com.snackatap.modelos.Producto;
 import emcafoz.com.snackatap.sqlite.MySQLiteHelper;
@@ -25,20 +32,41 @@ public class ScrollingActivity extends AppCompatActivity {
 
     public GoogleMap googleMap;
 
+    private ArrayList<Pair<Edificio, Float>> edificios;
+
+    private void sortEdificios(float x, float y) {
+        for (Pair<Edificio, Float> edificio : edificios) {
+            edificio = new Pair(edificio.first, (float) Math.sqrt((double) (
+                    Math.pow(edificio.first.getCx() - x, 2)
+                            + Math.pow(edificio.first.getCy() - y, 2))));
+        }
+    }
+
+    private Edificio getNearest() {
+        Pair<Edificio, Float> nearest = edificios.get(0);
+        for (Pair<Edificio, Float> edificio : edificios)
+            if (edificio.second < nearest.second)
+                nearest = edificio;
+        return nearest.first;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling);
+        edificios = new ArrayList<>();
         googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
         googleMap.getUiSettings().setZoomGesturesEnabled(false);
-
+        googleMap.getUiSettings().setCompassEnabled(true);
+        googleMap.getUiSettings().setMyLocationButtonEnabled(false);
+        googleMap.getUiSettings().setScrollGesturesEnabled(false);
         googleMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
             @Override
             public void onMyLocationChange(Location location) {
-                LatLng focus = new LatLng(location.getLatitude(), location.getLongitude());
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(focus, 15));
+                LatLng current_location = new LatLng(location.getLatitude(), location.getLongitude());
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(current_location, 16.5f));
+                sortEdificios((float) current_location.latitude, (float) current_location.longitude);
             }
         });
 
@@ -48,9 +76,13 @@ public class ScrollingActivity extends AppCompatActivity {
         //region inicializacion del producto
 
         Bundle bundle = getIntent().getBundleExtra("producto");
-
         MySQLiteHelper helper = new MySQLiteHelper(this);
         Producto producto = helper.getProducto(bundle.getString("nombre"));
+
+        for (Edificio edificio : producto.getEdificios()) {
+            edificios.add(new Pair<Edificio, Float>(edificio, -1f));
+        }
+
         for (Edificio edificio : producto.getEdificios()) {
             googleMap.addMarker(new MarkerOptions().position(new LatLng(
                     edificio.getCx(), edificio.getCy())).title(edificio.getNombre()));
@@ -81,12 +113,11 @@ public class ScrollingActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //region reemplazar con Google Maps
-                // Snackbar.make(view, getResources().getString(R.string.snackbar), Snackbar.LENGTH_LONG)
-                //         .setAction("Action", null).show();
-                //endregion
-
+                Edificio nearest = getNearest();
+                Uri gmmIntentUri = Uri.parse("google.navigation:q=" + Double.toString(nearest.getCx()) + "," + Double.toString(nearest.getCy()));
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
             }
         });
         //endregion
