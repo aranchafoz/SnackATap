@@ -4,18 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import emcafoz.com.snackatap.sqlite.MySQLiteHelper;
 
 public class Inicio extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,SearchView.OnQueryTextListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +62,41 @@ public class Inicio extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
 
-        return true;
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.search_view, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        SearchView searchView = (SearchView)
+                MenuItemCompat.getActionView(searchItem);
+
+        searchView.setOnQueryTextListener(this);
+                /*
+                new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextChange (String newText) {
+                        //Text has changed, apply filtering?
+                        return false;
+                    }
+                    @Override
+                    public onQueryTextSubmit(String query) {
+                        //Perform the final search
+                    }
+                }*/
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+
+        return false;
     }
 
     @Override
@@ -80,9 +115,9 @@ public class Inicio extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_search) {
+        if (id == R.id.nav_all) {
             // Handle the camera action
-            Intent i = new Intent(this,Buscar.class);
+            Intent i = new Intent(this,ListaProductos.class);
             startActivity(i);
         } else if (id == R.id.nav_categories) {
             // Desplegar las 4 categorias: cafes, frutas, refrescos, snacks

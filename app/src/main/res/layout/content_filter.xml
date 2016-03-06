@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/categorias"
+        android:textSize="24dp"
+        android:textColor="@color/color_PrimaryText"/>
+
+    <View
+        android:id="@+id/div3"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_Divider"
+        android:layout_below="@+id/tv1"
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/precio_min"
+        android:textSize="24dp"
+        android:textColor="@color/color_PrimaryText"
+        android:layout_below="@+id/div3"/>
+
+    <View
+        android:id="@+id/div4"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_Divider"
+        android:layout_below="@+id/tv2"
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/precio_max"
+        android:textSize="24dp"
+        android:textColor="@color/color_PrimaryText"
+        android:layout_below="@+id/div4"/>
+
+    <View
+        android:id="@+id/div5"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_Divider"
+        android:layout_below="@+id/tv3"
+        android:layout_margin="16dp"/>
+
+    <!--Edificios -->
+    <TextView
+        android:id="@+id/tv4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Disponible en..."
+        android:textSize="24dp"
+        android:textColor="@color/color_PrimaryText"
+        android:layout_below="@+id/div5"/>
+
+    <View
+        android:id="@+id/div6"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_Divider"
+        android:layout_below="@+id/tv4"
+        android:layout_margin="16dp"/>
+
+</RelativeLayout>

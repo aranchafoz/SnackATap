@@ -3,7 +3,7 @@
     <string name="saludo">¡Bienvenido!</string>
     <string name="email">snackatap@gmail.com</string>
 
-    <string name="buscar">Buscar</string>
+    <string name="todos">Todos</string>
     <string name="categorias">Categorías</string>
     <string name="filtrar">Filtrar</string>
     <string name="mas">Más...</string>
@@ -18,6 +18,9 @@
 
     <string name="precio">Precio</string>
     <string name="producto">Producto</string>
+
+    <string name="precio_min">Precio mínimo</string>
+    <string name="precio_max">Precio máximo</string>
 
     <string name="action_search">Action of search</string>
     <string name="toolbar">Toolbar_search</string>

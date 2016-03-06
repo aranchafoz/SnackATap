@@ -3,7 +3,7 @@
     <string name="saludo">Welcome!</string>
     <string name="email">snackatap@gmail.com</string>
 
-    <string name="buscar">Search</string>
+    <string name="todos">All</string>
     <string name="categorias">Categories</string>
     <string name="filtrar">Filter</string>
     <string name="mas">More...</string>
