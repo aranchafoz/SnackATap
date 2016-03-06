@@ -114,10 +114,11 @@ public class ScrollingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Edificio nearest = getNearest();
-                Uri gmmIntentUri = Uri.parse("google.navigation:q=" + Double.toString(nearest.getCx()) + "," + Double.toString(nearest.getCy()));
+                Uri gmmIntentUri = Uri.parse("google.navigation:q=" + Double.toString(nearest.getCx()) + "," + Double.toString(nearest.getCy()) + "&mode=w");
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 startActivity(mapIntent);
+
             }
         });
         //endregion
