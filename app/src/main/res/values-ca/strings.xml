@@ -5,6 +5,7 @@
 
     <string name="todos">Tots</string>
     <string name="categorias">Categories</string>
+    <string name="favoritos">Favorits</string>
     <string name="filtrar">Filtrar</string>
     <string name="mas">Més...</string>
     <string name="contact">Contacta</string>
@@ -19,6 +20,12 @@
 
     <string name="precio">Preu</string>
     <string name="producto">Producte</string>
+
+    <string name="precio_min">Preu mínim</string>
+    <string name="precio_max">Preu màxim</string>
+
+    <string name="aplicar">Aplicar</string>
+    <string name="cancelar">Cancel·lar</string>
 
     <string name="action_search">Action of search</string>
 
@@ -84,5 +91,21 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_scrolling"></string>
+
+    <string-array name="categorias_array">
+
+        <item>Totes</item>
+
+        <item>Aigüa</item>
+
+        <item>Cafè</item>
+
+        <item>Menjar sa</item>
+
+        <item>Refresc</item>
+
+        <item>Snack</item>
+
+    </string-array>
 
 </resources>

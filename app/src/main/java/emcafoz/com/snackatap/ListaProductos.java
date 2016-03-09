@@ -1,9 +1,15 @@
 package emcafoz.com.snackatap;
 
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 
@@ -24,7 +30,14 @@ public class ListaProductos extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lista_productos);
+        setContentView(R.layout.activity_lista_productos);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.miToolbar);
+        setSupportActionBar(toolbar);
+
+        final ActionBar ab = getSupportActionBar();
+
+        ab.setTitle("Productos");
 
         new Thread(new Runnable() {
             @Override
@@ -65,5 +78,29 @@ public class ListaProductos extends AppCompatActivity{
         adaptador = new ProductoAdaptador(datos);
         reciclador.setAdapter(adaptador);
         reciclador.refreshDrawableState();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.activity_menu_productos, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_filter);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_filter:
+                //region PONER EL PRODUCTO A FAVORITO
+                SelectFilters dialog = new SelectFilters();
+                dialog.show(getSupportFragmentManager(),"my dialog");
+                return true;
+            //endregion
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

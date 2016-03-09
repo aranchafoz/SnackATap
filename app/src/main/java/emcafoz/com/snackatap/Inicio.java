@@ -72,18 +72,6 @@ public class Inicio extends AppCompatActivity
                 MenuItemCompat.getActionView(searchItem);
 
         searchView.setOnQueryTextListener(this);
-                /*
-                new SearchView.OnQueryTextListener() {
-                    @Override
-                    public boolean onQueryTextChange (String newText) {
-                        //Text has changed, apply filtering?
-                        return false;
-                    }
-                    @Override
-                    public onQueryTextSubmit(String query) {
-                        //Perform the final search
-                    }
-                }*/
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -123,9 +111,13 @@ public class Inicio extends AppCompatActivity
             // Desplegar las 4 categorias: cafes, frutas, refrescos, snacks
             Intent i = new Intent(this,ListaProductos.class);
             startActivity(i);
-        } else if (id == R.id.nav_filter) {
+        } else if (id == R.id.nav_favorites) {
+            /*
             Intent i2 = new Intent(this,SelectFilters.class);
             startActivity(i2);
+            */
+            Intent i = new Intent(this,ListaProductos.class);
+            startActivity(i);
         }  else if (id == R.id.nav_contact) {
 
             //region Hacer cosas chungas con la app de correo

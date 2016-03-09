@@ -35,12 +35,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
                 android:text="@string/producto"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:textColor="@color/color_Primary"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="4dp"
                 />
 
             <View
@@ -49,21 +50,21 @@
                 android:layout_height="0.5dp"
                 android:background="@color/color_Divider"
                 android:layout_below="@+id/txt1"
-                android:layout_centerInParent="true"/>
+                android:layout_centerVertical="true"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:id="@+id/nombre_producto"
                 android:text="Producto X"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="32dp"
-                android:layout_alignEnd="@+id/div1"
+                android:layout_marginTop="4dp"
+                android:layout_below="@+id/div1"
+                android:layout_alignParentLeft="true"
                 />
 
         </RelativeLayout>
@@ -93,12 +94,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
                 android:text="@string/precio"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:textColor="@color/color_Primary"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="4dp"
                 />
 
             <View
@@ -117,11 +119,11 @@
                 android:text="Precio X"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="32dp"
-                android:layout_alignEnd="@+id/div2"
+                android:layout_marginTop="4dp"
+                android:layout_below="@+id/div2"
+                android:layout_alignParentLeft="true"
                 />
 
         </RelativeLayout>

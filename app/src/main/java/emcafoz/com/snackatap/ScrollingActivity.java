@@ -10,6 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.Pair;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -73,6 +76,9 @@ public class ScrollingActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //region inicializacion del producto
 
         Bundle bundle = getIntent().getBundleExtra("producto");
@@ -122,5 +128,30 @@ public class ScrollingActivity extends AppCompatActivity {
             }
         });
         //endregion
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.activity_menu_scrolling, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_favorite);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            case R.id.action_favorite:
+                //region PONER EL PRODUCTO A FAVORITO
+                return true;
+                //endregion
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

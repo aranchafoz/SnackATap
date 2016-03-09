@@ -5,6 +5,7 @@
 
     <string name="todos">Guztiak</string>
     <string name="categorias">Kategoria</string>
+    <string name="favoritos">Gustukoenak</string>
     <string name="filtrar">Iragaztea</string>
     <string name="mas">Gehiago...</string>
     <string name="contact">Zenba gaitzazu</string>
@@ -18,6 +19,12 @@
 
     <string name="precio">Prezioa</string>
     <string name="producto">Produktu</string>
+
+    <string name="precio_min">Prezio minimoa</string>
+    <string name="precio_max">Prezio maximoa</string>
+
+    <string name="aplicar">Ematea</string>
+    <string name="cancelar">Ezeztatzea</string>
 
     <string name="action_search">Action of search</string>
 
@@ -84,5 +91,21 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_scrolling"></string>
+
+    <string-array name="categorias_array">
+
+        <item>Guztiak</item>
+
+        <item>Ura</item>
+
+        <item>Kafeak</item>
+
+        <item>Bazkari osasuntsua</item>
+
+        <item>Freskagarriak</item>
+
+        <item>Mokaduak</item>
+
+    </string-array>
 
 </resources>

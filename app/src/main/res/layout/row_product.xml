@@ -23,7 +23,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="5dp" />
+            android:layout_marginRight="5dp"
+            android:src="@drawable/porque"/>
 
         <TextView
             android:id="@+id/lblNombre"
@@ -33,7 +34,7 @@
 
             android:layout_toEndOf="@+id/imgProducto"
             android:layout_toRightOf="@+id/imgProducto"
-            android:textSize="18dp"
+            android:textSize="16sp"
             android:text="Producto X"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -42,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/lblNombre"
+            android:textSize="12sp"
             android:layout_toRightOf="@+id/imgProducto"
             android:text="Categoria"/>
 

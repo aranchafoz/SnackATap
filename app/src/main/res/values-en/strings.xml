@@ -5,6 +5,7 @@
 
     <string name="todos">All</string>
     <string name="categorias">Categories</string>
+    <string name="favoritos">Favorites</string>
     <string name="filtrar">Filter</string>
     <string name="mas">More...</string>
     <string name="contact">Contact us</string>
@@ -18,6 +19,12 @@
 
     <string name="precio">Price</string>
     <string name="producto">Product</string>
+
+    <string name="precio_min">Minimum price</string>
+    <string name="precio_max">Maximun price</string>
+
+    <string name="aplicar">Apply</string>
+    <string name="cancelar">Cancel</string>
 
     <string name="action_search">Action of search</string>
 
@@ -84,5 +91,21 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_scrolling"></string>
+
+    <string-array name="categorias_array">
+
+        <item>All</item>
+
+        <item>Water</item>
+
+        <item>Caffee</item>
+
+        <item>Healthy food</item>
+
+        <item>Drink</item>
+
+        <item>Snack</item>
+
+    </string-array>
 
 </resources>
