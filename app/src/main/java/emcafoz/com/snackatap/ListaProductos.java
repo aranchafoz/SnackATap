@@ -1,7 +1,6 @@
 package emcafoz.com.snackatap;
 
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +12,6 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
-import emcafoz.com.snackatap.modelos.Categoria;
 import emcafoz.com.snackatap.modelos.Producto;
 import emcafoz.com.snackatap.sqlite.MySQLiteHelper;
 
@@ -30,7 +28,7 @@ public class ListaProductos extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_productos);
+        setContentView(R.layout.content_lista_productos);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.miToolbar);
         setSupportActionBar(toolbar);

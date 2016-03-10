@@ -37,7 +37,7 @@
         android:layout_below="@+id/tv1"
         />
     -->
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginRight="16dp"
@@ -45,15 +45,24 @@
 
         <TextView
             android:id="@+id/tv2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/precio_min"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textColor="@color/color_PrimaryText"
-            android:layout_below="@+id/div3"
-            android:layout_gravity="center_vertical" />
+            android:layout_centerVertical="true"/>
 
-    </LinearLayout>
+        <EditText
+            android:id="@+id/editText_min"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+           />
+
+    </RelativeLayout>
     <!--
     <View
         android:id="@+id/div4"
@@ -62,7 +71,7 @@
         android:background="@color/color_Divider"
         android:layout_below="@+id/tv2"/>
     -->
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginRight="16dp"
@@ -70,16 +79,24 @@
 
         <TextView
             android:id="@+id/tv3"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/precio_max"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textColor="@color/color_PrimaryText"
-            android:layout_below="@+id/div4"
-            android:gravity="center_vertical"
-            android:layout_gravity="center_vertical" />
+            android:layout_centerVertical="true"/>
 
-    </LinearLayout>
+        <EditText
+            android:id="@+id/editText_max"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
     <!--
     <View
         android:id="@+id/div5"
