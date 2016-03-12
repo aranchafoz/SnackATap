@@ -1,30 +1,25 @@
 package emcafoz.com.snackatap;
 
 import android.content.Intent;
-import android.graphics.Point;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.security.spec.ECField;
 import java.util.ArrayList;
 
 import emcafoz.com.snackatap.modelos.Edificio;
@@ -36,6 +31,8 @@ public class ScrollingActivity extends AppCompatActivity {
     public GoogleMap googleMap;
 
     private ArrayList<Pair<Edificio, Float>> edificios;
+
+    private boolean favorito = false;
 
     private void sortEdificios(float x, float y) {
         for (Pair<Edificio, Float> edificio : edificios) {
@@ -149,6 +146,13 @@ public class ScrollingActivity extends AppCompatActivity {
                 return true;
             case R.id.action_favorite:
                 //region PONER EL PRODUCTO A FAVORITO
+                if(!favorito){
+                    item.setIcon(R.drawable.ic_action_favorite_filled_36dp);
+                    favorito = true;
+                } else {
+                    item.setIcon(R.drawable.ic_action_favorite);
+                    favorito = false;
+                }
                 return true;
                 //endregion
         }

@@ -113,6 +113,7 @@ public class Inicio extends AppCompatActivity
             Intent i = new Intent(this,ListaProductosCategorias.class);
             startActivity(i);
         } else if (id == R.id.nav_favorites) {
+
             /*
             Intent i2 = new Intent(this,SelectFilters.class);
             startActivity(i2);
