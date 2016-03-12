@@ -106,6 +106,7 @@
         android:layout_below="@+id/tv3"/>
     -->
     <!--Edificios -->
+    <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -125,6 +126,7 @@
             />
 
     </LinearLayout>
+    -->
     <!--
     <View
         android:id="@+id/div6"

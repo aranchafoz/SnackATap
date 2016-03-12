@@ -20,6 +20,8 @@ import emcafoz.com.snackatap.sqlite.MySQLiteHelper;
 public class Inicio extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,SearchView.OnQueryTextListener {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -37,6 +37,9 @@ public class ListaProductos extends AppCompatActivity{
 
         ab.setTitle("Productos");
 
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -89,15 +92,20 @@ public class ListaProductos extends AppCompatActivity{
         return super.onCreateOptionsMenu(menu);
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
             case R.id.action_filter:
-                //region PONER EL PRODUCTO A FAVORITO
+                //region Seleccionar filtros
                 SelectFilters dialog = new SelectFilters();
                 dialog.show(getSupportFragmentManager(),"my dialog");
                 return true;
-            //endregion
+                //endregion
         }
         return super.onOptionsItemSelected(item);
     }
