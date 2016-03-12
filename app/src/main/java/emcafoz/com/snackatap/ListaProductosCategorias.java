@@ -45,98 +45,103 @@ public class ListaProductosCategorias extends AppCompatActivity{
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //endregion
 
-        //region Tabs
-        Resources res = getResources();
-
-        TabHost tabs = (TabHost)findViewById(R.id.tabhost);
-        tabs.setup();
-
-        TabHost.TabSpec spec = tabs.newTabSpec("mitab1");
-        spec.setContent(R.id.tab1);
-        spec.setIndicator("Agua");
-        tabs.addTab(spec);
-
-        spec = tabs.newTabSpec("mitab2");
-        spec.setContent(R.id.tab2);
-        spec.setIndicator("Cafés");
-        tabs.addTab(spec);
-
-        spec = tabs.newTabSpec("mitab3");
-        spec.setContent(R.id.tab3);
-        spec.setIndicator("Comida sana");
-        tabs.addTab(spec);
-
-        spec = tabs.newTabSpec("mitab4");
-        spec.setContent(R.id.tab4);
-        spec.setIndicator("Refrescos");
-        tabs.addTab(spec);
-
-        spec = tabs.newTabSpec("mitab5");
-        spec.setContent(R.id.tab5);
-        spec.setIndicator("Snacks");
-        tabs.addTab(spec);
-
-        tabs.setCurrentTab(0);
-
-
-        tabs.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+        new Thread(new Runnable() {
             @Override
-            public void onTabChanged(String tabId) {
-                switch (tabId) {
-                    case "mitab1":
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                cargar(R.id.reciclador1);
-                            }
-                        }).run();
-                        //reciclador= (RecyclerView) findViewById(R.id.reciclador1);
-                        //cargar(reciclador);
-                        break;
-                    case "mitab2":
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                cargar(R.id.reciclador2);
-                            }
-                        }).run();
-                        //reciclador= (RecyclerView) findViewById(R.id.reciclador2);
-                        //cargar(reciclador);
-                        break;
-                    case "mitab3":
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                cargar(R.id.reciclador3);
-                            }
-                        }).run();
-                        //reciclador= (RecyclerView) findViewById(R.id.reciclador3);
-                        //cargar(reciclador);
-                        break;
-                    case "mitab4":
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                cargar(R.id.reciclador4);
-                            }
-                        }).run();
-                        //reciclador= (RecyclerView) findViewById(R.id.reciclador4);
-                        //cargar(reciclador);
-                        break;
-                    case "mitab5":
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                cargar(R.id.reciclador5);
-                            }
-                        }).run();
-                        //reciclador= (RecyclerView) findViewById(R.id.reciclador5);
-                        //cargar(reciclador);
-                        break;
-                }
+            public void run() {
+                //region Tabs
+                Resources res = getResources();
+
+                TabHost tabs = (TabHost)findViewById(R.id.tabhost);
+                tabs.setup();
+
+                TabHost.TabSpec spec = tabs.newTabSpec("mitab1");
+                spec.setContent(R.id.tab1);
+                spec.setIndicator("Agua");
+                tabs.addTab(spec);
+
+                spec = tabs.newTabSpec("mitab2");
+                spec.setContent(R.id.tab2);
+                spec.setIndicator("Cafés");
+                tabs.addTab(spec);
+
+                spec = tabs.newTabSpec("mitab3");
+                spec.setContent(R.id.tab3);
+                spec.setIndicator("Comida sana");
+                tabs.addTab(spec);
+
+                spec = tabs.newTabSpec("mitab4");
+                spec.setContent(R.id.tab4);
+                spec.setIndicator("Refrescos");
+                tabs.addTab(spec);
+
+                spec = tabs.newTabSpec("mitab5");
+                spec.setContent(R.id.tab5);
+                spec.setIndicator("Snacks");
+                tabs.addTab(spec);
+
+                tabs.setCurrentTab(0);
+
+
+                tabs.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+                    @Override
+                    public void onTabChanged(String tabId) {
+                        switch (tabId) {
+                            case "mitab1":
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        cargar(R.id.reciclador1);
+                                    }
+                                }).run();
+                                //reciclador= (RecyclerView) findViewById(R.id.reciclador1);
+                                //cargar(reciclador);
+                                break;
+                            case "mitab2":
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        cargar(R.id.reciclador2);
+                                    }
+                                }).run();
+                                //reciclador= (RecyclerView) findViewById(R.id.reciclador2);
+                                //cargar(reciclador);
+                                break;
+                            case "mitab3":
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        cargar(R.id.reciclador3);
+                                    }
+                                }).run();
+                                //reciclador= (RecyclerView) findViewById(R.id.reciclador3);
+                                //cargar(reciclador);
+                                break;
+                            case "mitab4":
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        cargar(R.id.reciclador4);
+                                    }
+                                }).run();
+                                //reciclador= (RecyclerView) findViewById(R.id.reciclador4);
+                                //cargar(reciclador);
+                                break;
+                            case "mitab5":
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        cargar(R.id.reciclador5);
+                                    }
+                                }).run();
+                                //reciclador= (RecyclerView) findViewById(R.id.reciclador5);
+                                //cargar(reciclador);
+                                break;
+                        }
+                    }
+                });
+                //endregion
             }
-        });
-        //endregion
+        }).run();
 
         new Thread(new Runnable() {
             @Override
