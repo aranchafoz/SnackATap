@@ -10,7 +10,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -111,7 +110,7 @@ public class Inicio extends AppCompatActivity
             startActivity(i);
         } else if (id == R.id.nav_categories) {
             // Desplegar las 4 categorias: cafes, frutas, refrescos, snacks
-            Intent i = new Intent(this,ListaProductos.class);
+            Intent i = new Intent(this,ListaProductosCategorias.class);
             startActivity(i);
         } else if (id == R.id.nav_favorites) {
             /*

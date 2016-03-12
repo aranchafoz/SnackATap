@@ -36,6 +36,8 @@
         <activity android:name=".Settings" />
         <activity android:name=".ListaProductos"
             android:theme="@style/AppTheme" />
+        <activity android:name=".ListaProductosCategorias"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ScrollingActivity"
             android:label="@string/title_activity_scrolling"

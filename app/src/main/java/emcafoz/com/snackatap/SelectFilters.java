@@ -26,7 +26,7 @@ public class SelectFilters extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.filtrar);
 
-
+        /*
         //region Spinner
 
 
@@ -39,7 +39,7 @@ public class SelectFilters extends DialogFragment {
         spinner.setAdapter(adapter);
 
         //endregion
-
+        */
 
         builder.setView(v).setPositiveButton(R.string.aplicar, new DialogInterface.OnClickListener() {
             @Override
