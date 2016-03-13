@@ -30,6 +30,13 @@ public class Producto {
         }
     }
 
+    public static String[] getStringArray() {
+        String[] s = new String[ALL.size()];
+        for (int i = 0; i < ALL.size(); i++)
+            s[i] = ALL.get(i).nombre;
+        return s;
+    }
+
     public static ArrayList<Producto> getFromCategoria(Categoria categoria) {
         ArrayList<Producto> productos = new ArrayList<>();
         for (Producto producto : ALL) {

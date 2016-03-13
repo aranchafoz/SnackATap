@@ -11,9 +11,12 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import emcafoz.com.snackatap.modelos.Producto;
 import emcafoz.com.snackatap.sqlite.MySQLiteHelper;
@@ -21,6 +24,10 @@ import emcafoz.com.snackatap.sqlite.MySQLiteHelper;
 public class Inicio extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,SearchView.OnQueryTextListener {
 
+    private ListView mListView;
+    private MenuItem searchItem;
+
+    private String[] mStrings;
 
 
     @Override
@@ -28,13 +35,8 @@ public class Inicio extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         MySQLiteHelper.createDB(this);
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Producto.getAll(getApplicationContext());
-            }
-        }).run();
+        Producto.getAll(getApplicationContext());
+        mStrings = Producto.getStringArray();
 
         setContentView(R.layout.activity_inicio);
         Toolbar toolbar = (Toolbar) findViewById(R.id.miToolbar);
@@ -76,10 +78,16 @@ public class Inicio extends AppCompatActivity
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.search_view, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.action_search);
+        searchItem = menu.findItem(R.id.action_search);
 
         SearchView searchView = (SearchView)
                 MenuItemCompat.getActionView(searchItem);
+
+        mListView = (ListView) findViewById(R.id.list_view);
+        mListView.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                mStrings));
+        mListView.setTextFilterEnabled(true);
 
         searchView.setOnQueryTextListener(this);
 
@@ -91,10 +99,14 @@ public class Inicio extends AppCompatActivity
         return false;
     }
 
-    @Override
-    public boolean onQueryTextChange(String newText) {
 
-        return false;
+    public boolean onQueryTextChange(String newText) {
+        if (TextUtils.isEmpty(newText)) {
+            mListView.clearTextFilter();
+        } else {
+            mListView.setFilterText(newText.toString());
+        }
+        return true;
     }
 
     @Override
@@ -119,7 +131,7 @@ public class Inicio extends AppCompatActivity
             startActivity(i);
         } else if (id == R.id.nav_categories) {
             // Desplegar las 4 categorias: cafes, frutas, refrescos, snacks
-            Intent i = new Intent(this,ListaProductosCategorias.class);
+            Intent i = new Intent(this, ListaProductosCategorias.class);
             startActivity(i);
         } else if (id == R.id.nav_favorites) {
 
@@ -127,7 +139,7 @@ public class Inicio extends AppCompatActivity
             Intent i2 = new Intent(this,SelectFilters.class);
             startActivity(i2);
             */
-            Intent i = new Intent(this,ListaProductos.class);
+            Intent i = new Intent(this, ListaProductos.class);
             startActivity(i);
         }  else if (id == R.id.nav_contact) {
 
