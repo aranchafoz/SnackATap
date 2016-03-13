@@ -2,6 +2,7 @@ package emcafoz.com.snackatap;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,8 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TabHost;
 
 import java.util.ArrayList;
 
@@ -32,7 +31,7 @@ public class ListaProductosCategorias extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_lista_productos_categorias);
+        setContentView(R.layout.activity_categorias);
 
         //region toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.miToolbar);
@@ -51,14 +50,20 @@ public class ListaProductosCategorias extends AppCompatActivity{
             public void run() {
                 //region Tabs
                 Resources res = getResources();
+                TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+               // ViewPager pager = (ViewPager) findViewById(R.id.pager);
+                //TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager());
 
-                TabHost tabs = (TabHost)findViewById(R.id.tabhost);
-                tabs.setup();
+               // pager.setAdapter(adapter);
+                //tabLayout.setupWithViewPager();
 
-                TabHost.TabSpec spec = tabs.newTabSpec("mitab1");
-                spec.setContent(R.id.tab1);
-                spec.setIndicator("Agua");
-                tabs.addTab(spec);
+                tabLayout.addTab(tabLayout.newTab().setText("Cafés"));
+                tabLayout.addTab(tabLayout.newTab().setText("Comida sana"));
+                tabLayout.addTab(tabLayout.newTab().setText("Refrescos"));
+                tabLayout.addTab(tabLayout.newTab().setText("Snacks"));
+                //TabHost tabs = (TabHost)findViewById(R.id.tabhost);
+                //tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
+                /*tabs.setup();
 
                 spec = tabs.newTabSpec("mitab2");
                 spec.setContent(R.id.tab2);
@@ -81,12 +86,13 @@ public class ListaProductosCategorias extends AppCompatActivity{
                 tabs.addTab(spec);
 
                 tabs.setCurrentTab(0);
-
-
+                */
+                /*
                 tabs.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
                     @Override
                     public void onTabChanged(String tabId) {
                         switch (tabId) {
+<<<<<<< Updated upstream
                             case "mitab1":
                                 new Thread(new Runnable() {
                                     @Override
@@ -97,6 +103,8 @@ public class ListaProductosCategorias extends AppCompatActivity{
                                 //reciclador= (RecyclerView) findViewById(R.id.reciclador1);
                                 //cargar(reciclador);
                                 break;
+=======
+>>>>>>> Stashed changes
                             case "mitab2":
                                 new Thread(new Runnable() {
                                     @Override
@@ -141,13 +149,18 @@ public class ListaProductosCategorias extends AppCompatActivity{
                     }
                 });
                 //endregion
+                */
             }
         }).run();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
+<<<<<<< Updated upstream
                 cargar(R.id.reciclador1, Categoria.Agua);
+=======
+                cargar(R.id.reciclador);
+>>>>>>> Stashed changes
             }
         }).run();
     }

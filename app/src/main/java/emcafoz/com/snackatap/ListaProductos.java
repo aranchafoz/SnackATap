@@ -28,7 +28,7 @@ public class ListaProductos extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_lista_productos);
+        setContentView(R.layout.activity_lista_productos);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.miToolbar);
         setSupportActionBar(toolbar);
