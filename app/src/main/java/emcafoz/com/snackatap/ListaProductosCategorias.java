@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -60,7 +61,15 @@ public class ListaProductosCategorias extends AppCompatActivity{
             @Override
             public void run() {
                 //region Tabs
+                tabs = (TabLayout) findViewById(R.id.tabs);
 
+                tabs.addTab(tabs.newTab().setText("Cafés"));
+                tabs.addTab(tabs.newTab().setText("Comida saludable"));
+                tabs.addTab(tabs.newTab().setText("Refrescos"));
+                tabs.addTab(tabs.newTab().setText("Snacks"));
+
+                tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
+                /*
                 // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
                 adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs);
 
@@ -79,10 +88,45 @@ public class ListaProductosCategorias extends AppCompatActivity{
                         return getResources().getColor(R.color.tabsScrollColor);
                     }
                 });*/
+
                 tabs.setBackgroundColor(getResources().getColor(R.color.color_Primary));
                 tabs.setTabTextColors(ColorStateList.valueOf(getResources().getColor(R.color.color_Icons)));
+
+                tabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+
+                        Log.i("eyy",new String("Pulsaste: " + tab.getText()));
+                        switch (tab.getText().toString()){
+                            case "Cafés":
+                                cargar(R.id.reciclador,Categoria.Café);
+                                break;
+                            case "Comida saludable":
+                                cargar(R.id.reciclador,Categoria.ComidaSana);
+                                break;
+                            case "Refrescos":
+                                cargar(R.id.reciclador,Categoria.Refresco);
+                                break;
+                            case "Snacks":
+                                cargar(R.id.reciclador,Categoria.Snacks);
+                                break;
+
+                        }
+                    }
+
+                    @Override
+                    public void onTabUnselected(TabLayout.Tab tab) {
+
+                    }
+
+                    @Override
+                    public void onTabReselected(TabLayout.Tab tab) {
+
+                    }
+                });
+
                 // Setting the ViewPager For the SlidingTabsLayout
-                tabs.setupWithViewPager(pager);
+                //tabs.setupWithViewPager(pager);
 
                 //endregion
             }

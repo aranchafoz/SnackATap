@@ -43,17 +43,17 @@ public class ListaProductos extends AppCompatActivity{
 
         // Almacena en 'favoritos' true si se han de mostrar solo los favoritos y false si se han de mostrar todos
         Bundle bundle = getIntent().getBundleExtra("tipo");
-        boolean favoritos = bundle.getBoolean("favoritos");
+        final boolean favoritos = bundle.getBoolean("favoritos");
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                cargar();
+                cargar(favoritos);
             }
         }).run();
     }
 
-    private void cargar() {
+    private void cargar(boolean favoritos) {
 
         //Inicializa los datos de productos
         datos = Producto.ALL;
