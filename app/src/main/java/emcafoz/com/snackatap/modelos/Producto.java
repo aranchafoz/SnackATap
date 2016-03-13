@@ -104,11 +104,10 @@ public class Producto {
     public void setFav(boolean fav) { this.fav = fav; }
 
     public void changeFav(Context context) {
-        if (fav)  fav = false;
-        else fav = true;
+        fav = fav ? false : true;
         MySQLiteHelper helper = new MySQLiteHelper(context);
         helper.updateProducto(this);
-        Log.d("Update", "fav set to " + this.nombre);
+        Log.d("Update", "fav set to " + this.fav + " to " + this.nombre);
     }
 
     public void setEdificios(ArrayList<Edificio> edificios) {

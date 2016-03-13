@@ -431,7 +431,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             producto.setNombre(cursor.getString(1));
             producto.setPrecio(Float.parseFloat(cursor.getString(2)));
             producto.setCategoria(Categoria.valueOf(cursor.getString(3)));
-            producto.setFav(Boolean.parseBoolean(cursor.getString(4)));
+            producto.setFav(1 == Integer.parseInt(cursor.getString(4)));
             cursor.close();
             producto.setEdificios(getEdificiosOfProducto(producto.getId()));
             return producto;
@@ -456,7 +456,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 producto.setNombre(cursor.getString(1));
                 producto.setPrecio(Float.parseFloat(cursor.getString(2)));
                 producto.setCategoria(Categoria.valueOf(cursor.getString(3)));
-                producto.setFav(Boolean.parseBoolean(cursor.getString(4)));
+                producto.setFav(1 == Integer.parseInt(cursor.getString(4)));
+                Log.d("fav", cursor.getString(4));
                 cursor.close();
                 producto.setEdificios(getEdificiosOfProducto(producto.getId()));
                 return producto;
@@ -515,7 +516,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 producto.setNombre(cursor.getString(1));
                 producto.setPrecio(Float.parseFloat(cursor.getString(2)));
                 producto.setCategoria(Categoria.valueOf(cursor.getString(3)));
-                producto.setFav(Boolean.parseBoolean(cursor.getString(4)));
+                producto.setFav(1 == Integer.parseInt(cursor.getString(4)));
                 producto.setEdificios(getEdificiosOfProducto(producto.getId()));
             } while (cursor.moveToNext());
         }
@@ -564,7 +565,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 producto.setNombre(cursor.getString(1));
                 producto.setPrecio(Float.parseFloat(cursor.getString(2)));
                 producto.setCategoria(Categoria.valueOf(cursor.getString(3)));
-                producto.setFav(Boolean.parseBoolean(cursor.getString(4)));
+                producto.setFav(1 == Integer.parseInt(cursor.getString(4)));
                 producto.setEdificios(getEdificiosOfProducto(producto.getId()));
 
                 productos.add(producto);
@@ -625,6 +626,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         values.put(PRODUCTO_CATEGORIA, producto.getCategoria().toString());
         values.put(PRODUCTO_FAV, producto.isFav());
 
+        Log.d("id", String.format("%d", producto.getId()));
+
         db.update(PRODUCTO_TABLA,
                 values,
                 PRODUCTO_ID + " = ?",
@@ -632,8 +635,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
         db.close();
 
-        deleteProductosInEdificio(producto.getId());
-        addProductosInEdificio(producto);
+//        deleteProductosInEdificio(producto.getId());
+//        addProductosInEdificio(producto);
     }
 
     public void updateEdificio(Edificio edificio) {
