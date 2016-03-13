@@ -82,13 +82,13 @@ public class Inicio extends AppCompatActivity
 
         SearchView searchView = (SearchView)
                 MenuItemCompat.getActionView(searchItem);
-
+/*
         mListView = (ListView) findViewById(R.id.list_view);
         mListView.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 mStrings));
         mListView.setTextFilterEnabled(true);
-
+*/
         searchView.setOnQueryTextListener(this);
 
         return super.onCreateOptionsMenu(menu);
