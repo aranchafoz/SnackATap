@@ -38,6 +38,13 @@ public class Inicio extends AppCompatActivity
         Producto.getAll(getApplicationContext());
         mStrings = Producto.getStringArray();
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Producto.getAll(getApplicationContext());
+            }
+        }).run();
+
         setContentView(R.layout.activity_inicio);
         Toolbar toolbar = (Toolbar) findViewById(R.id.miToolbar);
         setSupportActionBar(toolbar);
@@ -78,17 +85,17 @@ public class Inicio extends AppCompatActivity
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.search_view, menu);
 
-        searchItem = menu.findItem(R.id.action_search);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
 
         SearchView searchView = (SearchView)
                 MenuItemCompat.getActionView(searchItem);
-/*
+
         mListView = (ListView) findViewById(R.id.list_view);
         mListView.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 mStrings));
         mListView.setTextFilterEnabled(true);
-*/
+
         searchView.setOnQueryTextListener(this);
 
         return super.onCreateOptionsMenu(menu);
