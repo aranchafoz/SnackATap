@@ -134,7 +134,12 @@ public class ScrollingActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.activity_menu_scrolling, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.action_favorite);
+        MenuItem item = menu.findItem(R.id.action_favorite);
+
+        if(producto.isFav())
+            item.setIcon(R.drawable.ic_action_favorite_filled_36dp);
+        else
+            item.setIcon(R.drawable.ic_action_favorite);
 
         return super.onCreateOptionsMenu(menu);
     }

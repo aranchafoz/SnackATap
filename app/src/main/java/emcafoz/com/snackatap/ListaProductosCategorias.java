@@ -15,6 +15,7 @@ import android.widget.TabHost;
 
 import java.util.ArrayList;
 
+import emcafoz.com.snackatap.modelos.Categoria;
 import emcafoz.com.snackatap.modelos.Producto;
 import emcafoz.com.snackatap.sqlite.MySQLiteHelper;
 
@@ -90,7 +91,7 @@ public class ListaProductosCategorias extends AppCompatActivity{
                                 new Thread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        cargar(R.id.reciclador1);
+                                        cargar(R.id.reciclador1, Categoria.Agua);
                                     }
                                 }).run();
                                 //reciclador= (RecyclerView) findViewById(R.id.reciclador1);
@@ -100,7 +101,7 @@ public class ListaProductosCategorias extends AppCompatActivity{
                                 new Thread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        cargar(R.id.reciclador2);
+                                        cargar(R.id.reciclador2, Categoria.Café);
                                     }
                                 }).run();
                                 //reciclador= (RecyclerView) findViewById(R.id.reciclador2);
@@ -110,7 +111,7 @@ public class ListaProductosCategorias extends AppCompatActivity{
                                 new Thread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        cargar(R.id.reciclador3);
+                                        cargar(R.id.reciclador3, Categoria.ComidaSana);
                                     }
                                 }).run();
                                 //reciclador= (RecyclerView) findViewById(R.id.reciclador3);
@@ -120,7 +121,7 @@ public class ListaProductosCategorias extends AppCompatActivity{
                                 new Thread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        cargar(R.id.reciclador4);
+                                        cargar(R.id.reciclador4, Categoria.Refresco);
                                     }
                                 }).run();
                                 //reciclador= (RecyclerView) findViewById(R.id.reciclador4);
@@ -130,7 +131,7 @@ public class ListaProductosCategorias extends AppCompatActivity{
                                 new Thread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        cargar(R.id.reciclador5);
+                                        cargar(R.id.reciclador5, Categoria.Snacks);
                                     }
                                 }).run();
                                 //reciclador= (RecyclerView) findViewById(R.id.reciclador5);
@@ -146,30 +147,14 @@ public class ListaProductosCategorias extends AppCompatActivity{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                cargar(R.id.reciclador1);
+                cargar(R.id.reciclador1, Categoria.Agua);
             }
         }).run();
     }
 
-    private void cargar(int v) {
+    private void cargar(int v, Categoria categoria) {
         //Inicializa los datos de productos
-        /**datos = new ArrayList<>();
-         //Rellenar con datos reales
-         datos.add(new Producto("Cafe de cocaina", 0.5f, Categoria.Café, null));
-         datos.add(new Producto("Cafe de marihuana", 0.5f, Categoria.Café, null));
-         datos.add(new Producto("Agua",0.5f, Categoria.Agua,null));
-         datos.add(new Producto("Cafe de vainilla",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Cafe de avellana",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Agua",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Cafe de vainilla",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Cafe de avellana",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Agua",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Cafe de vainilla",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Cafe de avellana",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Agua",0.5f, Categoria.Café,null));
-         */
-        MySQLiteHelper helper = new MySQLiteHelper(this);
-        datos = helper.getAllProductos();
+        datos = Producto.getFromCategoria(categoria);
 
         // Crea un RecyclerView
         reciclador = (RecyclerView) findViewById(v);
