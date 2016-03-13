@@ -40,6 +40,11 @@ public class ListaProductos extends AppCompatActivity{
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+        // Almacena en 'favoritos' true si se han de mostrar solo los favoritos y false si se han de mostrar todos
+        Bundle bundle = getIntent().getBundleExtra("tipo");
+        boolean favoritos = bundle.getBoolean("favoritos");
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -49,9 +54,6 @@ public class ListaProductos extends AppCompatActivity{
     }
 
     private void cargar() {
-        // Almacena en 'favoritos' true si se han de mostrar solo los favoritos y false si se han de mostrar todos
-        Bundle bundle = getIntent().getBundleExtra("tipo");
-        boolean favoritos = bundle.getBoolean("favoritos");
 
         //Inicializa los datos de productos
         datos = Producto.ALL;

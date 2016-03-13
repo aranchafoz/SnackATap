@@ -134,7 +134,10 @@ public class Inicio extends AppCompatActivity
 
         if (id == R.id.nav_all) {
             // Handle the camera action
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("favoritos",false);
             Intent i = new Intent(this,ListaProductos.class);
+            i.putExtra("tipo",bundle);
             startActivity(i);
         } else if (id == R.id.nav_categories) {
             // Desplegar las 4 categorias: cafes, frutas, refrescos, snacks
@@ -146,7 +149,10 @@ public class Inicio extends AppCompatActivity
             Intent i2 = new Intent(this,SelectFilters.class);
             startActivity(i2);
             */
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("favoritos",true);
             Intent i = new Intent(this, ListaProductos.class);
+            i.putExtra("tipo",bundle);
             startActivity(i);
         }  else if (id == R.id.nav_contact) {
 
