@@ -108,11 +108,11 @@ public class Inicio extends AppCompatActivity
 
 
     public boolean onQueryTextChange(String newText) {
-        if (TextUtils.isEmpty(newText)) {
+/*        if (TextUtils.isEmpty(newText)) {
             mListView.clearTextFilter();
         } else {
             mListView.setFilterText(newText.toString());
-        }
+        }*/
         return true;
     }
 
@@ -157,10 +157,10 @@ public class Inicio extends AppCompatActivity
         }  else if (id == R.id.nav_contact) {
 
             //region Hacer cosas chungas con la app de correo
-            Intent intent = new Intent(Intent.ACTION_SENDTO); // it's not ACTION_SEND
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
             intent.setType("text/plain");
-            intent.setData(Uri.parse("mailto:snackatap@gmail.com")); // or just "mailto:" for blank
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
+            intent.setData(Uri.parse("mailto:snackatap@gmail.com"));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             //endregion
 

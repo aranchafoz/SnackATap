@@ -25,6 +25,8 @@ public class ListaProductos extends AppCompatActivity{
 
     private ArrayList<Producto> datos;
 
+    private boolean favoritos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +45,7 @@ public class ListaProductos extends AppCompatActivity{
 
         // Almacena en 'favoritos' true si se han de mostrar solo los favoritos y false si se han de mostrar todos
         Bundle bundle = getIntent().getBundleExtra("tipo");
-        boolean favoritos = bundle.getBoolean("favoritos");
+        favoritos = bundle.getBoolean("favoritos");
 
         new Thread(new Runnable() {
             @Override
@@ -56,7 +58,10 @@ public class ListaProductos extends AppCompatActivity{
     private void cargar() {
 
         //Inicializa los datos de productos
-        datos = Producto.ALL;
+        if (favoritos)
+            datos = Producto.getFavs();
+        else
+            datos = Producto.ALL;
 
         // Crea un RecyclerView
         reciclador = (RecyclerView) findViewById(R.id.reciclador);
