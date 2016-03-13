@@ -1,8 +1,10 @@
 package emcafoz.com.snackatap;
 
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,6 +30,15 @@ public class ListaProductosCategorias extends AppCompatActivity{
 
     private ArrayList<Producto> datos;
 
+    ViewPager pager;
+    ViewPagerAdapter adapter;
+    TabLayout tabs;
+    CharSequence Titles[]={ "Cafés",
+                            "Comida sana",
+                            "Refrescos",
+                            "Snacks"};
+    int Numboftabs = 4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +50,7 @@ public class ListaProductosCategorias extends AppCompatActivity{
 
         final ActionBar ab = getSupportActionBar();
 
-        ab.setTitle("Productos");
+        ab.setTitle(R.string.categorias);
 
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -49,120 +60,41 @@ public class ListaProductosCategorias extends AppCompatActivity{
             @Override
             public void run() {
                 //region Tabs
-                Resources res = getResources();
-                TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-               // ViewPager pager = (ViewPager) findViewById(R.id.pager);
-                //TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager());
 
-               // pager.setAdapter(adapter);
-                //tabLayout.setupWithViewPager();
+                // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
+                adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs);
 
-                tabLayout.addTab(tabLayout.newTab().setText("Cafés"));
-                tabLayout.addTab(tabLayout.newTab().setText("Comida sana"));
-                tabLayout.addTab(tabLayout.newTab().setText("Refrescos"));
-                tabLayout.addTab(tabLayout.newTab().setText("Snacks"));
-                //TabHost tabs = (TabHost)findViewById(R.id.tabhost);
-                //tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
-                /*tabs.setup();
+                // Assigning ViewPager View and setting the adapter
+                pager = (ViewPager) findViewById(R.id.pager);
+                pager.setAdapter(adapter);
 
-                spec = tabs.newTabSpec("mitab2");
-                spec.setContent(R.id.tab2);
-                spec.setIndicator("Cafés");
-                tabs.addTab(spec);
-
-                spec = tabs.newTabSpec("mitab3");
-                spec.setContent(R.id.tab3);
-                spec.setIndicator("Comida sana");
-                tabs.addTab(spec);
-
-                spec = tabs.newTabSpec("mitab4");
-                spec.setContent(R.id.tab4);
-                spec.setIndicator("Refrescos");
-                tabs.addTab(spec);
-
-                spec = tabs.newTabSpec("mitab5");
-                spec.setContent(R.id.tab5);
-                spec.setIndicator("Snacks");
-                tabs.addTab(spec);
-
-                tabs.setCurrentTab(0);
-                */
+                // Assiging the Sliding Tab Layout View
+                tabs = (TabLayout) findViewById(R.id.tabs);
+                //tabs.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
                 /*
-                tabs.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+                // Setting Custom Color for the Scroll bar indicator of the Tab View
+                tabs.setCustomTabColorizer(new TabLayout.TabColorizer() {
                     @Override
-                    public void onTabChanged(String tabId) {
-                        switch (tabId) {
-<<<<<<< Updated upstream
-                            case "mitab1":
-                                new Thread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        cargar(R.id.reciclador1, Categoria.Agua);
-                                    }
-                                }).run();
-                                //reciclador= (RecyclerView) findViewById(R.id.reciclador1);
-                                //cargar(reciclador);
-                                break;
-=======
->>>>>>> Stashed changes
-                            case "mitab2":
-                                new Thread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        cargar(R.id.reciclador2, Categoria.Café);
-                                    }
-                                }).run();
-                                //reciclador= (RecyclerView) findViewById(R.id.reciclador2);
-                                //cargar(reciclador);
-                                break;
-                            case "mitab3":
-                                new Thread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        cargar(R.id.reciclador3, Categoria.ComidaSana);
-                                    }
-                                }).run();
-                                //reciclador= (RecyclerView) findViewById(R.id.reciclador3);
-                                //cargar(reciclador);
-                                break;
-                            case "mitab4":
-                                new Thread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        cargar(R.id.reciclador4, Categoria.Refresco);
-                                    }
-                                }).run();
-                                //reciclador= (RecyclerView) findViewById(R.id.reciclador4);
-                                //cargar(reciclador);
-                                break;
-                            case "mitab5":
-                                new Thread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        cargar(R.id.reciclador5, Categoria.Snacks);
-                                    }
-                                }).run();
-                                //reciclador= (RecyclerView) findViewById(R.id.reciclador5);
-                                //cargar(reciclador);
-                                break;
-                        }
+                    public int getIndicatorColor(int position) {
+                        return getResources().getColor(R.color.tabsScrollColor);
                     }
-                });
+                });*/
+                tabs.setBackgroundColor(getResources().getColor(R.color.color_Primary));
+                tabs.setTabTextColors(ColorStateList.valueOf(getResources().getColor(R.color.color_Icons)));
+                // Setting the ViewPager For the SlidingTabsLayout
+                tabs.setupWithViewPager(pager);
+
                 //endregion
-                */
             }
         }).run();
-
+        /*
         new Thread(new Runnable() {
             @Override
             public void run() {
-<<<<<<< Updated upstream
-                cargar(R.id.reciclador1, Categoria.Agua);
-=======
-                cargar(R.id.reciclador);
->>>>>>> Stashed changes
+                cargar(R.id.reciclador, Categoria.Agua);
             }
         }).run();
+        */
     }
 
     private void cargar(int v, Categoria categoria) {

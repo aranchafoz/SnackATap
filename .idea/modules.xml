@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SnackATap.iml" filepath="$PROJECT_DIR$/SnackATap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Snack_a_TAP-master-arancha.iml" filepath="$PROJECT_DIR$/Snack_a_TAP-master-arancha.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
