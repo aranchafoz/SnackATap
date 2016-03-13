@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Point;
 import android.util.Log;
 
 import java.io.File;
@@ -57,9 +58,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     public static void createDB(Context context) {
         MySQLiteHelper helper = new MySQLiteHelper(context);
-
         helper.copyDatabaseFromAssets(context, DATABASE_NAME, false);
-/*
+        helper.close();
+
+        helper = new MySQLiteHelper(context);
+
+        /*
         //region cosas pasadas
         Log.d("Edificios", Integer.toString(helper.getAllEdificios().size()));
         Log.d("Productos", Integer.toString(helper.getAllProductos().size()));
@@ -494,13 +498,13 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     public ArrayList<Producto> getProductosFromCategoria(Categoria categoria) {
         ArrayList<Producto> productos = new ArrayList<>();
-
+        Log.d("DB", "getting productos from categoría");
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 PRODUCTO_TABLA,
                 PRODUCTO_COLUMNAS,
                 " categoria = ?",
-                new String[]{String.valueOf(categoria)},
+                new String[]{categoria.toString()},
                 null, null, null, null);
 
         if (cursor != null) {

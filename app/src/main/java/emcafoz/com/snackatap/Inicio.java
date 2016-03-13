@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import emcafoz.com.snackatap.modelos.Producto;
 import emcafoz.com.snackatap.sqlite.MySQLiteHelper;
 
 public class Inicio extends AppCompatActivity
@@ -26,6 +27,13 @@ public class Inicio extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         MySQLiteHelper.createDB(this);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Producto.getAll(getApplicationContext());
+            }
+        }).run();
 
         setContentView(R.layout.activity_inicio);
         Toolbar toolbar = (Toolbar) findViewById(R.id.miToolbar);

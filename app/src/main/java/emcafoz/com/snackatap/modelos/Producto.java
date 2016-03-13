@@ -1,11 +1,18 @@
 package emcafoz.com.snackatap.modelos;
 
+import android.content.Context;
+import android.util.Log;
+
 import java.util.ArrayList;
+
+import emcafoz.com.snackatap.sqlite.MySQLiteHelper;
 
 /**
  * Created by enrique on 4/02/16.
  */
 public class Producto {
+    public static ArrayList<Producto> ALL;
+
     private int id;
     private String nombre;
     private float precio;
@@ -13,6 +20,33 @@ public class Producto {
     private ArrayList<Edificio> edificios;
     private boolean fav = false;
     int imagen;
+
+    public static void getAll(Context context) {
+        MySQLiteHelper db = new MySQLiteHelper(context);
+        ALL = db.getAllProductos();
+        for (Producto producto : getFromCategoria(Categoria.CaféXXL)) {
+            producto.setCategoria(Categoria.Café);
+            db.updateProducto(producto);
+        }
+    }
+
+    public static ArrayList<Producto> getFromCategoria(Categoria categoria) {
+        ArrayList<Producto> productos = new ArrayList<>();
+        for (Producto producto : ALL) {
+            if (producto.categoria == categoria)
+                productos.add(producto);
+        }
+        return productos;
+    }
+
+    public static ArrayList<Producto> getFavs() {
+        ArrayList<Producto> productos = new ArrayList<>();
+        for (Producto producto : ALL) {
+            if (producto.isFav())
+                productos.add(producto);
+        }
+        return productos;
+    }
 
     public Producto() {}
 
@@ -68,6 +102,14 @@ public class Producto {
     public boolean isFav() { return fav; }
 
     public void setFav(boolean fav) { this.fav = fav; }
+
+    public void changeFav(Context context) {
+        if (fav)  fav = false;
+        else fav = true;
+        MySQLiteHelper helper = new MySQLiteHelper(context);
+        helper.updateProducto(this);
+        Log.d("Update", "fav set to " + this.nombre);
+    }
 
     public void setEdificios(ArrayList<Edificio> edificios) {
         this.edificios = edificios;

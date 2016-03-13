@@ -50,23 +50,7 @@ public class ListaProductos extends AppCompatActivity{
 
     private void cargar() {
         //Inicializa los datos de productos
-        /**datos = new ArrayList<>();
-         //Rellenar con datos reales
-         datos.add(new Producto("Cafe de cocaina", 0.5f, Categoria.Café, null));
-         datos.add(new Producto("Cafe de marihuana", 0.5f, Categoria.Café, null));
-         datos.add(new Producto("Agua",0.5f, Categoria.Agua,null));
-         datos.add(new Producto("Cafe de vainilla",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Cafe de avellana",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Agua",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Cafe de vainilla",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Cafe de avellana",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Agua",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Cafe de vainilla",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Cafe de avellana",0.5f, Categoria.Café,null));
-         datos.add(new Producto("Agua",0.5f, Categoria.Café,null));
-         */
-        MySQLiteHelper helper = new MySQLiteHelper(this);
-        datos = helper.getAllProductos();
+        datos = Producto.ALL;
 
         // Crea un RecyclerView
         reciclador = (RecyclerView) findViewById(R.id.reciclador);

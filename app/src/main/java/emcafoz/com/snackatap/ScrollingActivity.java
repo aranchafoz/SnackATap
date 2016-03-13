@@ -30,6 +30,7 @@ public class ScrollingActivity extends AppCompatActivity {
 
     public GoogleMap googleMap;
 
+    private Producto producto;
     private ArrayList<Pair<Edificio, Float>> edificios;
 
     private boolean favorito = false;
@@ -80,7 +81,7 @@ public class ScrollingActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getBundleExtra("producto");
         MySQLiteHelper helper = new MySQLiteHelper(this);
-        Producto producto = helper.getProducto(bundle.getString("nombre"));
+        producto = helper.getProducto(bundle.getString("nombre"));
 
         for (Edificio edificio : producto.getEdificios()) {
             edificios.add(new Pair<Edificio, Float>(edificio, -1f));
@@ -146,15 +147,13 @@ public class ScrollingActivity extends AppCompatActivity {
                 return true;
             case R.id.action_favorite:
                 //region PONER EL PRODUCTO A FAVORITO
-                if(!favorito){
+                producto.changeFav(this);
+                if(producto.isFav())
                     item.setIcon(R.drawable.ic_action_favorite_filled_36dp);
-                    favorito = true;
-                } else {
+                else
                     item.setIcon(R.drawable.ic_action_favorite);
-                    favorito = false;
-                }
                 return true;
-                //endregion
+            //endregion
         }
         return super.onOptionsItemSelected(item);
     }
