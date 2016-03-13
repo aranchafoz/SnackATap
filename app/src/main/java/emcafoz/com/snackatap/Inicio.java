@@ -1,6 +1,7 @@
 package emcafoz.com.snackatap;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -131,6 +132,11 @@ public class Inicio extends AppCompatActivity
         }  else if (id == R.id.nav_contact) {
 
             //region Hacer cosas chungas con la app de correo
+            Intent intent = new Intent(Intent.ACTION_SENDTO); // it's not ACTION_SEND
+            intent.setType("text/plain");
+            intent.setData(Uri.parse("mailto:snackatap@gmail.com")); // or just "mailto:" for blank
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
+            startActivity(intent);
             //endregion
 
         } else if (id == R.id.nav_setting) {
